@@ -58,6 +58,10 @@ namespace Serial_monitor {
                 appendToConsoleOut(data);
             };
 
+            Global.SC.error += (string error) => {
+                MessageBox.Show(error, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            };
+
             Global.SC.Update();
             // Selected kun i start ved ComboBox Port
             ComboBoxPort.SelectedIndex = 0;
@@ -84,6 +88,29 @@ namespace Serial_monitor {
 
         private void MenuButtonClear_Click(object sender, RoutedEventArgs e) {
             ClearConsoleOut();
+        }
+
+        private void MenuItemClearTable_Click(object sender, RoutedEventArgs e) {
+            ConsoleTables.Clear();
+        }
+
+        private void MenuItemExportAsCSV_Click(object sender, RoutedEventArgs e) {
+            List<ConsoleTableClass> datas = ConsoleTables.ToList();
+            StringBuilder csv = new StringBuilder();
+
+            SaveFileDialog sfd = new SaveFileDialog();
+
+            sfd.Filter = "CSV|*csv|All Files|*.*";
+            sfd.Title = "Save table data";
+            sfd.FileName = "Data";
+
+            if ((bool)sfd.ShowDialog()) {
+                csv.AppendLine("ID;Context;Timestamp;");
+                foreach (ConsoleTableClass data in datas) {
+                    csv.AppendLine(data.ID.ToString() + ";" + data.Context + ";" + data.Timestamp + ";");
+                }
+                File.WriteAllText(sfd.FileName, csv.ToString());
+            }
         }
 
         private void ButtonConnect_Click(object sender, RoutedEventArgs e) {
@@ -149,15 +176,18 @@ namespace Serial_monitor {
         // Skal kigge på.
         private void UpdateRX(string data) {
 
-            string[] x = Regex.Split(data, "\r\n");
+            string[] x = Regex.Split(data, "\r\n|\r|\n");
 
             for (int i = 0; i < x.Length; i++) {
                 if (x.Length > 1 && i != (x.Length - 1)) {
                     Debug.WriteLine("OK Send: " + x[i]);
                     rx.Data += x[i];
                     rx.EndTime = DateTime.Now;
-                    if (rx.Data != "")
+                    if (rx.Data != "") {
                         Global.dataRX.Add(rx);
+                        AddToConsoleTable(rx);
+                    }
+
                     rx = new RX();
                     //rx = null;
                 } else {
@@ -166,6 +196,10 @@ namespace Serial_monitor {
                 }
             }
 
+        }
+
+        private void AddToConsoleTable(RX data) {
+            ConsoleTables.Add(new ConsoleTableClass {ID = ConsoleTables.Count, Context = data.Data, Timestamp = data.StarTime.ToString("dd-MM-yyyy HH:mm:ss.ffff") });
         }
 
         private void SaveDataF() {
@@ -209,7 +243,7 @@ namespace Serial_monitor {
                 sendData();
             }
         }
-        
+
     }
 
     public class TempTableClass {

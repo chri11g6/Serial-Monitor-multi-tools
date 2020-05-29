@@ -29,6 +29,13 @@
                             <DataGridTextColumn Binding="{Binding Context}" Header="Context"/>
                             <DataGridTextColumn Binding="{Binding Timestamp}" Header="Timestamp"/>
                         </DataGrid.Columns>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Export as csv" Name="MenuItemExportAsCSV" Click="MenuItemExportAsCSV_Click"/>
+                                <Separator/>
+                                <MenuItem Header="Clear table" Name="MenuItemClearTable" Click="MenuItemClearTable_Click"/>
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
                     </DataGrid>
                 </TabItem>
                 <TabItem Header="Temp">
