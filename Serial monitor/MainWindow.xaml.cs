@@ -227,6 +227,16 @@ namespace Serial_monitor {
 
                 if ((bool)AutoscrollCheck.IsChecked) {
                     ConsoleOutScroll.ScrollToEnd();
+                    
+                    try {
+                        if (DataGridConsoleTable.Items.Count > 0) {
+                            var border = VisualTreeHelper.GetChild(DataGridConsoleTable, 0) as Decorator;
+                            if (border != null) {
+                                var scroll = border.Child as ScrollViewer;
+                                if (scroll != null) scroll.ScrollToEnd();
+                            }
+                        }
+                    }catch { }
                 }
             }));
         }
