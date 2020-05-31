@@ -5,5 +5,29 @@
     <sys:String x:Key="ResourceDictionaryName">Loc-da-DK</sys:String>
 
     <sys:String x:Key="WindowTitle">Serial monitor</sys:String>
+    <sys:String x:Key="ImportAsCsv">Importer som csv</sys:String>
+    <sys:String x:Key="ExportAsCsv">Eksporter som csv</sys:String>
+    <sys:String x:Key="ClearTemp">Ryd temp</sys:String>
+    <sys:String x:Key="ClearTable">Ryd table</sys:String>
+    <sys:String x:Key="ClearOutput">Ryd output</sys:String>
+    <sys:String x:Key="SaveData">Gem Data</sys:String>
+    <sys:String x:Key="ConsoleTable">Konsol Table</sys:String>
+    <sys:String x:Key="NoLineEnding">Ingen linie slutter</sys:String>
+    <sys:String x:Key="CarriageReturn">Vognretur</sys:String>
+    <sys:String x:Key="BothNLAndCR">Både NL og CR</sys:String>
+    <sys:String x:Key="ShowTimestamp">Vis tidsstempel</sys:String>
+
+    <!--Word-->
     <sys:String x:Key="Language">Sprog</sys:String>
+    <sys:String x:Key="Console">Konsol</sys:String>
+    <sys:String x:Key="To">Til</sys:String>
+    <sys:String x:Key="From">Fra</sys:String>
+    <sys:String x:Key="Context">Sammenhæng</sys:String>
+    <sys:String x:Key="Timestamp">Tidsstempel</sys:String>
+    <sys:String x:Key="Temp">Temp</sys:String>
+    <sys:String x:Key="Setting">Indstilling</sys:String>
+    <sys:String x:Key="Newline">Ny linje</sys:String>
+    <sys:String x:Key="Autoscroll">Autoscroll</sys:String>
+    <sys:String x:Key="Send">Send</sys:String>
+    <sys:String x:Key="Connect">Forbinde</sys:String>
 </ResourceDictionary>
