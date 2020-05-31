@@ -180,6 +180,7 @@ namespace Serial_monitor {
                     Debug.WriteLine("OK Send: " + x[i]);
                     rx.Data += x[i];
                     rx.EndTime = DateTime.Now;
+
                     if (rx.Data != "") {
                         Global.dataRX.Add(rx);
                         AddToConsoleTable(rx);
@@ -214,6 +215,10 @@ namespace Serial_monitor {
             Dispatcher.BeginInvoke(new Action(() => {
 
                 UpdateRX(text);
+
+                foreach (TempTableClass temp in TempTables) {
+                    text = text.Replace(temp.From, temp.To);
+                }
 
                 if ((bool)timestampCheck.IsChecked) {
                     ConsoleOut.Text += DateTime.Now.ToString("HH:mm:ss.ffff") + " -> " + text;

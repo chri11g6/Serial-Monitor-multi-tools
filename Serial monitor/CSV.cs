@@ -59,11 +59,23 @@ namespace Serial_monitor {
                 if ((bool)ofd.ShowDialog()) {
                     string[] dataLine = File.ReadAllText(ofd.FileName).Split('\n');
 
+                    bool isFristLine = true;
+
                     foreach(string line in dataLine) {
                         if (string.IsNullOrEmpty(line))
                             continue;
 
                         string[] data = line.Split(';');
+
+                        if (isFristLine) {
+                            try {
+                                int talx = int.Parse(data[0]);
+                            } catch {
+                                continue;
+                            }
+                        }
+
+
                         datas.Add(new TempTableClass { ID = int.Parse(data[0]), From = data[1], To = data[2] });
                     }
 
@@ -73,7 +85,7 @@ namespace Serial_monitor {
                         dataList.Add(temp);
                     }
                 }
-            }catch (Exception e) {
+            } catch (Exception e) {
                 StringBuilder message = new StringBuilder();
 
                 message.AppendLine(e.Message);
