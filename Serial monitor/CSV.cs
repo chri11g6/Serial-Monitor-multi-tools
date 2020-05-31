@@ -9,7 +9,7 @@ using Microsoft.Win32;
 using System.Windows;
 
 namespace Serial_monitor {
-    public class CSV {
+    public static class CSV {
         public static void Export(ObservableCollection<ConsoleTableClass> dataList) {
             List<ConsoleTableClass> datas = dataList.ToList();
             StringBuilder csv = new StringBuilder();

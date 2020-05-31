@@ -1,0 +1,33 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    
+    <sys:String x:Key="ResourceDictionaryName">Loc-en-US</sys:String>
+
+    <sys:String x:Key="WindowTitle">Serial monitor</sys:String>
+    <sys:String x:Key="ImportAsCsv">Import as csv</sys:String>
+    <sys:String x:Key="ExportAsCsv">Export as csv</sys:String>
+    <sys:String x:Key="ClearTemp">Clear Temp</sys:String>
+    <sys:String x:Key="ClearTable">Clear table</sys:String>
+    <sys:String x:Key="ClearOutput">Clear output</sys:String>
+    <sys:String x:Key="SaveData">Save Data</sys:String>
+    <sys:String x:Key="ConsoleTable">Console Table</sys:String>
+    <sys:String x:Key="NoLineEnding">No line ending</sys:String>
+    <sys:String x:Key="CarriageReturn">Carriage return</sys:String>
+    <sys:String x:Key="BothNLAndCR">Both NL and CR</sys:String>
+    <sys:String x:Key="ShowTimestamp">Show timestamp</sys:String>
+    
+    <!--Word-->
+    <sys:String x:Key="Language">Language</sys:String>
+    <sys:String x:Key="Console">Console</sys:String>
+    <sys:String x:Key="To">To</sys:String>
+    <sys:String x:Key="From">From</sys:String>
+    <sys:String x:Key="Context">Context</sys:String>
+    <sys:String x:Key="Timestamp">Timestamp</sys:String>
+    <sys:String x:Key="Temp">Temp</sys:String>
+    <sys:String x:Key="Setting">Setting</sys:String>
+    <sys:String x:Key="Newline">Newline</sys:String>
+    <sys:String x:Key="Autoscroll">Autoscroll</sys:String>
+    <sys:String x:Key="Send">Send</sys:String>
+    <sys:String x:Key="Connect">Connect</sys:String>
+</ResourceDictionary>

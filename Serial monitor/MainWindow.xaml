@@ -5,65 +5,84 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Serial_monitor"
         mc:Ignorable="d"
-        Title="Serial monitor" Height="450" MinHeight="200" MinWidth="650" Width="800" Background="#FFF0F0F0" Closing="Window_Closing">
+        Title="{DynamicResource ResourceKey=WindowTitle}" Height="450" MinHeight="200" MinWidth="650" Width="800" Background="#FFF0F0F0" Closing="Window_Closing">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="language/MainWindow.en-US.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Grid>
         <Border Margin="1,35,1,32">
             <TabControl>
-                <TabItem Header="Console">
+                <!--#region Console tab-->
+                <TabItem Header="{DynamicResource ResourceKey=Console}">
                     <ScrollViewer Name="ConsoleOutScroll" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                         <TextBox Name="ConsoleOut" IsReadOnly="True" Text="" Background="White" FontFamily="Consolas" FontSize="14">
                             <TextBox.ContextMenu>
                                 <ContextMenu>
-                                    <!--<MenuItem Name="Test" Header="TEST" Click="Test_Click" />-->
-                                    <MenuItem Name="SaveData" Header="Save Data" Click="SaveData_Click" />
-                                    <MenuItem Name="MenuButtonClear" Header="Clear output" Click="MenuButtonClear_Click" />
+                                    <MenuItem Name="SaveData" Header="{DynamicResource ResourceKey=SaveData}" Click="SaveData_Click" />
+                                    <MenuItem Name="MenuButtonClear" Header="{DynamicResource ResourceKey=ClearOutput}" Click="MenuButtonClear_Click" />
                                 </ContextMenu>
                             </TextBox.ContextMenu>
                         </TextBox>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem Header="Console Table">
+                <!--#endregion-->
+                <!--#region Console table tab-->
+                <TabItem Header="{DynamicResource ResourceKey=ConsoleTable}">
                     <DataGrid Name="DataGridConsoleTable" AutoGenerateColumns="False" IsReadOnly="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding ID}" Header="ID"/>
-                            <DataGridTextColumn Binding="{Binding Context}" Header="Context"/>
-                            <DataGridTextColumn Binding="{Binding Timestamp}" Header="Timestamp"/>
+                            <DataGridTextColumn Binding="{Binding Context}" Header="{DynamicResource ResourceKey=Context}"/>
+                            <DataGridTextColumn Binding="{Binding Timestamp}" Header="{DynamicResource ResourceKey=Timestamp}"/>
                         </DataGrid.Columns>
                         <DataGrid.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Header="Export as csv" Name="MenuItemExportAsCSV" Click="MenuItemExportAsCSV_Click"/>
+                                <MenuItem Header="{DynamicResource ResourceKey=ExportAsCsv}" Name="MenuItemExportAsCSV" Click="MenuItemExportAsCSV_Click"/>
                                 <Separator/>
-                                <MenuItem Header="Clear table" Name="MenuItemClearTable" Click="MenuItemClearTable_Click"/>
+                                <MenuItem Header="{DynamicResource ResourceKey=ClearTable}" Name="MenuItemClearTable" Click="MenuItemClearTable_Click"/>
                             </ContextMenu>
                         </DataGrid.ContextMenu>
                     </DataGrid>
                 </TabItem>
-                <TabItem Header="Temp">
-                    <DataGrid  Name="DataGridTempTable" AutoGenerateColumns="False">
+                <!--#endregion-->
+                <!--#region Temp tab-->
+                <TabItem Header="{DynamicResource ResourceKey=Temp}">
+                    <DataGrid Name="DataGridTempTable" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
-                            <DataGridTextColumn Width="200" Header="From" Binding="{Binding From}"/>
-                            <DataGridTextColumn Width="400" Header="To" Binding="{Binding To}"/>
+                            <DataGridTextColumn Width="200" Header="{DynamicResource ResourceKey=From}" Binding="{Binding From}"/>
+                            <DataGridTextColumn Width="400" Header="{DynamicResource ResourceKey=To}" Binding="{Binding To}"/>
                         </DataGrid.Columns>
                         <DataGrid.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Header="Import as csv" Name="MenuItemImportAsCSVToTemp" Click="MenuItemImportAsCSVToTemp_Click"/>
-                                <MenuItem Header="Export as csv" Name="MenuItemExportAsCSVToTemp" Click="MenuItemExportAsCSVToTemp_Click"/>
+                                <MenuItem Header="{DynamicResource ResourceKey=ImportAsCsv}" Name="MenuItemImportAsCSVToTemp" Click="MenuItemImportAsCSVToTemp_Click"/>
+                                <MenuItem Header="{DynamicResource ResourceKey=ExportAsCsv}" Name="MenuItemExportAsCSVToTemp" Click="MenuItemExportAsCSVToTemp_Click"/>
                                 <Separator/>
-                                <MenuItem Header="Clear Temp" Name="MenuItemClearTemp" Click="MenuItemClearTemp_Click"/>
+                                <MenuItem Header="{DynamicResource ResourceKey=ClearTemp}" Name="MenuItemClearTemp" Click="MenuItemClearTemp_Click"/>
                             </ContextMenu>
                         </DataGrid.ContextMenu>
                     </DataGrid>
                 </TabItem>
-                <TabItem Header="Setting">
-                    
+                <!--#endregion-->
+                <TabItem Header="{DynamicResource ResourceKey=Setting}">
+                    <Grid>
+                        <Label Content="{DynamicResource ResourceKey=Language}" Margin="0,10,0,0" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="67"/>
+                        <ComboBox Name="ComboBoxLanguage" Height="22" Width="120" Margin="67,14,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" SelectionChanged="ComboBoxLanguage_SelectionChanged">
+                            <ComboBoxItem Content="English US" Tag="en-US"/>
+                            <ComboBoxItem Content="Dansk" Tag="da-DK"/>
+                        </ComboBox>
+                    </Grid>
                 </TabItem>
             </TabControl>
-            
+
         </Border>
         <Border Margin="5,5" Height="22" VerticalAlignment="Bottom">
             <Grid>
-                <Button Name="ButtonClear" Content="Clear output" VerticalAlignment="Top" Height="22" HorizontalAlignment="Right" Width="100" Click="ButtonClear_Click"/>
+                <Button Name="ButtonClear" Content="{DynamicResource ResourceKey=ClearOutput}" VerticalAlignment="Top" Height="22" HorizontalAlignment="Right" Width="100" Click="ButtonClear_Click"/>
                 <ComboBox Name="ComboBoxBaud" Margin="0,0,105,0" VerticalAlignment="Top" Height="22" HorizontalAlignment="Right" Width="120">
                     <ComboBoxItem>300 baud</ComboBoxItem>
                     <ComboBoxItem>1200 baud</ComboBoxItem>
@@ -82,24 +101,24 @@
                     <ComboBoxItem>2000000 baud</ComboBoxItem>
                 </ComboBox>
                 <ComboBox Name="ComboBoxSendType" Margin="0,0,230,0" VerticalAlignment="Top" Height="22" HorizontalAlignment="Right" Width="120">
-                    <ComboBoxItem IsSelected="True">No line ending</ComboBoxItem>
-                    <ComboBoxItem>Newline</ComboBoxItem>
-                    <ComboBoxItem>Carriage return</ComboBoxItem>
-                    <ComboBoxItem>Both NL and CR</ComboBoxItem>
+                    <ComboBoxItem IsSelected="True" Content="{DynamicResource ResourceKey=NoLineEnding}"/>
+                    <ComboBoxItem Content="{DynamicResource ResourceKey=Newline}"/>
+                    <ComboBoxItem Content="{DynamicResource ResourceKey=CarriageReturn}"/>
+                    <ComboBoxItem Content="{DynamicResource ResourceKey=BothNLAndCR}"/>
                 </ComboBox>
                 <ComboBox Name="ComboBoxPort" Margin="0,0,355,0" VerticalAlignment="Top" Height="22" HorizontalAlignment="Right" Width="70" DropDownOpened="ComboBoxPort_DropDownOpened">
                     <!--<ComboBoxItem IsSelected="True">COM</ComboBoxItem>-->
                 </ComboBox>
-                <CheckBox IsChecked="True" Name="AutoscrollCheck" Content="Autoscroll" HorizontalAlignment="Left" Margin="5,4,0,0" VerticalAlignment="Top"/>
-                <CheckBox Name="timestampCheck" Content="Show timestamp" HorizontalAlignment="Left" Margin="83,4,0,0" VerticalAlignment="Top"/>
+                <CheckBox IsChecked="True" Name="AutoscrollCheck" Content="{DynamicResource ResourceKey=Autoscroll}" HorizontalAlignment="Left" Margin="5,4,0,0" VerticalAlignment="Top"/>
+                <CheckBox Name="timestampCheck" Content="{DynamicResource ResourceKey=ShowTimestamp}" HorizontalAlignment="Left" Margin="83,4,0,0" VerticalAlignment="Top"/>
 
             </Grid>
         </Border>
         <Border Height="20" Margin="5,10,5,0" VerticalAlignment="Top">
             <Grid>
                 <TextBox Name="ConsoleIn" Text="" VerticalAlignment="Top" Height="20" BorderBrush="#FFABADB3" Margin="0,0,135,0" KeyUp="ConsoleIn_KeyUp" />
-                <Button Name="buttonSend" Content="Send" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50" Click="ButtonSend_Click" Margin="0,0,80,0"/>
-                <Button Name="buttonConnect" Content="Connect" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Click="ButtonConnect_Click"/>
+                <Button Name="buttonSend" Content="{DynamicResource ResourceKey=Send}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50" Click="ButtonSend_Click" Margin="0,0,80,0"/>
+                <Button Name="buttonConnect" Content="{DynamicResource ResourceKey=Connect}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Click="ButtonConnect_Click"/>
             </Grid>
         </Border>
     </Grid>

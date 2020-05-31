@@ -65,7 +65,16 @@ namespace Serial_monitor {
             Global.SC.Update();
             // Selected kun i start ved ComboBox Port
             ComboBoxPort.SelectedIndex = 0;
-            
+
+            LocUtil.SetDefaultLanguage(this);
+
+            //int tal = 0;
+
+            foreach(ComboBoxItem item in ComboBoxLanguage.Items) {
+                if (item.Tag.ToString().Equals(LocUtil.GetCurrentCultureName(this)))
+                    ComboBoxLanguage.SelectedItem = item;
+            }
+
         }
 
         #region Button function
@@ -254,6 +263,14 @@ namespace Serial_monitor {
             if(e.Key == Key.Enter) {
                 sendData();
             }
+        }
+
+        private void ComboBoxLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            ComboBox cb = sender as ComboBox;
+
+            ComboBoxItem cbi = cb.SelectedItem as ComboBoxItem;
+
+            LocUtil.SwitchLanguage(this, cbi.Tag.ToString());
         }
     }
 }
