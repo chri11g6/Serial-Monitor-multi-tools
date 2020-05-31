@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CSV.cs" />
+    <Compile Include="Datatype.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="RX.cs" />
     <Compile Include="SerialConnect.cs" />

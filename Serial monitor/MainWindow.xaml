@@ -42,8 +42,17 @@
                     <DataGrid  Name="DataGridTempTable" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
-                            <DataGridTextColumn Width="400" Header="Text" Binding="{Binding Text}"/>
+                            <DataGridTextColumn Width="200" Header="From" Binding="{Binding From}"/>
+                            <DataGridTextColumn Width="400" Header="To" Binding="{Binding To}"/>
                         </DataGrid.Columns>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Import as csv" Name="MenuItemImportAsCSVToTemp" Click="MenuItemImportAsCSVToTemp_Click"/>
+                                <MenuItem Header="Export as csv" Name="MenuItemExportAsCSVToTemp" Click="MenuItemExportAsCSVToTemp_Click"/>
+                                <Separator/>
+                                <MenuItem Header="Clear Temp" Name="MenuItemClearTemp" Click="MenuItemClearTemp_Click"/>
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
                     </DataGrid>
                 </TabItem>
                 <TabItem Header="Setting">

@@ -9,5 +9,10 @@ void loop() {
   // put your main code here, to run repeatedly:
     Serial.println(tal);
     tal++;
+
+    if((tal % 10) == 0){
+        Serial.println("${88}");
+    }
+    
     delay(500);
 }

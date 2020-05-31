@@ -94,23 +94,20 @@ namespace Serial_monitor {
             ConsoleTables.Clear();
         }
 
+        private void MenuItemClearTemp_Click(object sender, RoutedEventArgs e) {
+            TempTables.Clear();
+        }
+
         private void MenuItemExportAsCSV_Click(object sender, RoutedEventArgs e) {
-            List<ConsoleTableClass> datas = ConsoleTables.ToList();
-            StringBuilder csv = new StringBuilder();
+            CSV.Export(ConsoleTables);
+        }
 
-            SaveFileDialog sfd = new SaveFileDialog();
+        private void MenuItemExportAsCSVToTemp_Click(object sender, RoutedEventArgs e) {
+            CSV.Export(TempTables);
+        }
 
-            sfd.Filter = "CSV|*csv|All Files|*.*";
-            sfd.Title = "Save table data";
-            sfd.FileName = "Data";
-
-            if ((bool)sfd.ShowDialog()) {
-                csv.AppendLine("ID;Context;Timestamp;");
-                foreach (ConsoleTableClass data in datas) {
-                    csv.AppendLine(data.ID.ToString() + ";" + data.Context + ";" + data.Timestamp + ";");
-                }
-                File.WriteAllText(sfd.FileName, csv.ToString());
-            }
+        private void MenuItemImportAsCSVToTemp_Click(object sender, RoutedEventArgs e) {
+            CSV.Import(ref TempTables);
         }
 
         private void ButtonConnect_Click(object sender, RoutedEventArgs e) {
@@ -253,17 +250,5 @@ namespace Serial_monitor {
                 sendData();
             }
         }
-
-    }
-
-    public class TempTableClass {
-        public int ID { set; get; }
-        public string Text { set; get; }
-    }
-
-    public class ConsoleTableClass {
-        public int ID { set; get; }
-        public string Context { set; get; }
-        public string Timestamp { set; get; }
     }
 }
