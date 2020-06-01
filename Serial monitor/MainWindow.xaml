@@ -36,8 +36,16 @@
                     <DataGrid Name="DataGridConsoleTable" AutoGenerateColumns="False" IsReadOnly="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding ID}" Header="ID"/>
-                            <DataGridTextColumn Binding="{Binding Context}" Header="{DynamicResource ResourceKey=Context}"/>
-                            <DataGridTextColumn Binding="{Binding Timestamp}" Header="{DynamicResource ResourceKey=Timestamp}"/>
+                            <DataGridTextColumn Binding="{Binding Context}">
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="{DynamicResource ResourceKey=Context}"/>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding Timestamp}">
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="{DynamicResource ResourceKey=Timestamp}"/>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
                         </DataGrid.Columns>
                         <DataGrid.ContextMenu>
                             <ContextMenu>
@@ -54,8 +62,16 @@
                     <DataGrid Name="DataGridTempTable" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
-                            <DataGridTextColumn Width="200" Header="{DynamicResource ResourceKey=From}" Binding="{Binding From}"/>
-                            <DataGridTextColumn Width="400" Header="{DynamicResource ResourceKey=To}" Binding="{Binding To}"/>
+                            <DataGridTextColumn Width="200" Binding="{Binding From}">
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="{DynamicResource ResourceKey=From}"/>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="400" Binding="{Binding To}">
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="{DynamicResource ResourceKey=To}"/>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
                         </DataGrid.Columns>
                         <DataGrid.ContextMenu>
                             <ContextMenu>
@@ -68,15 +84,19 @@
                     </DataGrid>
                 </TabItem>
                 <!--#endregion-->
+                <!--#region Setting Tab-->
                 <TabItem Header="{DynamicResource ResourceKey=Setting}">
                     <Grid>
-                        <Label Content="{DynamicResource ResourceKey=Language}" Margin="0,10,0,0" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="67"/>
-                        <ComboBox Name="ComboBoxLanguage" Height="22" Width="120" Margin="67,14,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" SelectionChanged="ComboBoxLanguage_SelectionChanged">
-                            <ComboBoxItem Content="English US" Tag="en-US"/>
-                            <ComboBoxItem Content="Dansk" Tag="da-DK"/>
-                        </ComboBox>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <Label Content="{DynamicResource ResourceKey=Language}" Height="30" Width="67"/>
+                            <ComboBox Name="ComboBoxLanguage" Height="22" Width="120" Margin="5,0,0,0" SelectionChanged="ComboBoxLanguage_SelectionChanged">
+                                <ComboBoxItem Content="English US" Tag="en-US"/>
+                                <ComboBoxItem Content="Dansk" Tag="da-DK"/>
+                            </ComboBox>                            
+                        </StackPanel>
                     </Grid>
                 </TabItem>
+                <!--#endregion-->
             </TabControl>
 
         </Border>
@@ -109,8 +129,10 @@
                 <ComboBox Name="ComboBoxPort" Margin="0,0,355,0" VerticalAlignment="Top" Height="22" HorizontalAlignment="Right" Width="70" DropDownOpened="ComboBoxPort_DropDownOpened">
                     <!--<ComboBoxItem IsSelected="True">COM</ComboBoxItem>-->
                 </ComboBox>
-                <CheckBox IsChecked="True" Name="AutoscrollCheck" Content="{DynamicResource ResourceKey=Autoscroll}" HorizontalAlignment="Left" Margin="5,4,0,0" VerticalAlignment="Top"/>
-                <CheckBox Name="timestampCheck" Content="{DynamicResource ResourceKey=ShowTimestamp}" HorizontalAlignment="Left" Margin="83,4,0,0" VerticalAlignment="Top"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <CheckBox IsChecked="True" Name="AutoscrollCheck" Content="{DynamicResource ResourceKey=Autoscroll}" HorizontalAlignment="Left" Margin="5,4,0,0" VerticalAlignment="Top"/>
+                    <CheckBox Name="timestampCheck" Content="{DynamicResource ResourceKey=ShowTimestamp}" HorizontalAlignment="Left" Margin="5,4,0,0" VerticalAlignment="Top"/>
+                </StackPanel>
 
             </Grid>
         </Border>
@@ -118,7 +140,7 @@
             <Grid>
                 <TextBox Name="ConsoleIn" Text="" VerticalAlignment="Top" Height="20" BorderBrush="#FFABADB3" Margin="0,0,135,0" KeyUp="ConsoleIn_KeyUp" />
                 <Button Name="buttonSend" Content="{DynamicResource ResourceKey=Send}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50" Click="ButtonSend_Click" Margin="0,0,80,0"/>
-                <Button Name="buttonConnect" Content="{DynamicResource ResourceKey=Connect}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Click="ButtonConnect_Click"/>
+                <Button Tag="Connect" Name="buttonConnect" Content="{DynamicResource ResourceKey=Connect}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Click="ButtonConnect_Click"/>
             </Grid>
         </Border>
     </Grid>

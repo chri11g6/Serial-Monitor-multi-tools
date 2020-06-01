@@ -120,8 +120,11 @@ namespace Serial_monitor {
         }
 
         private void ButtonConnect_Click(object sender, RoutedEventArgs e) {
-            string open = "Connect";
-            string close = "Disconnect";
+            //string open = "Connect";
+            string open = (string)FindResource("Connect");
+
+            //string close = "Disconnect";
+            string close = (string)FindResource("Disconnect");
 
             string val = buttonConnect.Content.ToString();
 

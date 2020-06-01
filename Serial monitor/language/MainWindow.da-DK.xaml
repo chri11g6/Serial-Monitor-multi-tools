@@ -30,4 +30,5 @@
     <sys:String x:Key="Autoscroll">Autoscroll</sys:String>
     <sys:String x:Key="Send">Send</sys:String>
     <sys:String x:Key="Connect">Forbinde</sys:String>
+    <sys:String x:Key="Disconnect">Afbryde</sys:String>
 </ResourceDictionary>
