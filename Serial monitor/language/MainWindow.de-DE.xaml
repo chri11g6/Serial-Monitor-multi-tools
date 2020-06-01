@@ -1,0 +1,40 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:String x:Key="ResourceDictionaryName">Loc-de-DE</sys:String>
+
+    <sys:String x:Key="WindowTitle">Serial monitor multi tools</sys:String>
+    <sys:String x:Key="ImportAsCsv">Als CSV importieren</sys:String>
+    <sys:String x:Key="ExportAsCsv">Export als CSV</sys:String>
+    <sys:String x:Key="ClearTemp">Temp löschen</sys:String>
+    <sys:String x:Key="ClearTable">Tabelle löschen</sys:String>
+    <sys:String x:Key="ClearOutput">Ausgabe löschen</sys:String>
+    <sys:String x:Key="SaveData">Daten speichern</sys:String>
+    <sys:String x:Key="ConsoleTable">Konsolentabelle</sys:String>
+    <sys:String x:Key="NoLineEnding">Kein Zeilenende</sys:String>
+    <sys:String x:Key="CarriageReturn">Wagenrücklauf</sys:String>
+    <sys:String x:Key="BothNLAndCR">Sowohl NL als auch CR</sys:String>
+    <sys:String x:Key="ShowTimestamp">Zeitstempel anzeigen</sys:String>
+
+    <!--Wort-->
+    <sys:String x:Key="Language">Sprache</sys:String>
+    <sys:String x:Key="Console">Konsole</sys:String>
+    <sys:String x:Key="To">Zu</sys:String>
+    <sys:String x:Key="From">Von</sys:String>
+    <sys:String x:Key="Context">Kontext</sys:String>
+    <sys:String x:Key="Timestamp">Zeitstempel</sys:String>
+    <sys:String x:Key="Temp">Temp</sys:String>
+    <sys:String x:Key="Setting">Rahmen</sys:String>
+    <sys:String x:Key="Newline">Neue Zeile</sys:String>
+    <sys:String x:Key="Autoscroll">Auto Scroll</sys:String>
+    <sys:String x:Key="Send">Senden</sys:String>
+    <sys:String x:Key="Connect">Verbinden</sys:String>
+    <sys:String x:Key="Disconnect">Trennen</sys:String>
+
+    <!--Sprache-->
+    <sys:String x:Key="EnglishUS">Englisch US</sys:String>
+    <sys:String x:Key="Danish">dänisch</sys:String>
+    <sys:String x:Key="German">Deutsche</sys:String>
+    
+</ResourceDictionary>

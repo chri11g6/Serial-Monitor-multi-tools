@@ -90,8 +90,9 @@
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <Label Content="{DynamicResource ResourceKey=Language}" Height="30" Width="67"/>
                             <ComboBox Name="ComboBoxLanguage" Height="22" Width="120" Margin="5,0,0,0" SelectionChanged="ComboBoxLanguage_SelectionChanged">
-                                <ComboBoxItem Content="English US" Tag="en-US"/>
-                                <ComboBoxItem Content="Dansk" Tag="da-DK"/>
+                                <ComboBoxItem Content="{DynamicResource ResourceKey=EnglishUS}" Tag="en-US"/>
+                                <ComboBoxItem Content="{DynamicResource ResourceKey=Danish}" Tag="da-DK"/>
+                                <ComboBoxItem Content="{DynamicResource ResourceKey=German}" Tag="de-DE"/>
                             </ComboBox>                            
                         </StackPanel>
                     </Grid>

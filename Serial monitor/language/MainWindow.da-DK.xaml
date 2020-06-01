@@ -4,7 +4,7 @@
     
     <sys:String x:Key="ResourceDictionaryName">Loc-da-DK</sys:String>
 
-    <sys:String x:Key="WindowTitle">Serial monitor</sys:String>
+    <sys:String x:Key="WindowTitle">Serial monitor multi tools</sys:String>
     <sys:String x:Key="ImportAsCsv">Importer som csv</sys:String>
     <sys:String x:Key="ExportAsCsv">Eksporter som csv</sys:String>
     <sys:String x:Key="ClearTemp">Ryd temp</sys:String>
@@ -31,4 +31,9 @@
     <sys:String x:Key="Send">Send</sys:String>
     <sys:String x:Key="Connect">Forbinde</sys:String>
     <sys:String x:Key="Disconnect">Afbryde</sys:String>
+
+    <!--Sprog-->
+    <sys:String x:Key="EnglishUS">Engelsk US</sys:String>
+    <sys:String x:Key="Danish">Dansk</sys:String>
+    <sys:String x:Key="German">Tysk</sys:String>
 </ResourceDictionary>
