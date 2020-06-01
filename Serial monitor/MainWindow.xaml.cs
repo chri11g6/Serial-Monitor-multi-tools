@@ -185,6 +185,11 @@ namespace Serial_monitor {
                     rx.EndTime = DateTime.Now;
 
                     if (rx.Data != "") {
+
+                        foreach (TempTableClass temp in TempTables) {
+                            rx.Data = rx.Data.Replace(temp.From, temp.To);
+                        }
+
                         Global.dataRX.Add(rx);
                         AddToConsoleTable(rx);
                     }
