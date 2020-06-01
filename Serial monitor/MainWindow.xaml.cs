@@ -25,7 +25,6 @@ namespace Serial_monitor {
     /// </summary>
     public partial class MainWindow : Window {
 
-        //private SerialConnect SC;
         private RX rx = new RX();
         public List<string> PortCom { get; set; }
 
@@ -63,12 +62,10 @@ namespace Serial_monitor {
             };
 
             Global.SC.Update();
-            // Selected kun i start ved ComboBox Port
+            // Selected only at startup at ComboBox Port
             ComboBoxPort.SelectedIndex = 0;
 
             LocUtil.SetDefaultLanguage(this);
-
-            //int tal = 0;
 
             foreach(ComboBoxItem item in ComboBoxLanguage.Items) {
                 if (item.Tag.ToString().Equals(LocUtil.GetCurrentCultureName(this)))
@@ -120,10 +117,7 @@ namespace Serial_monitor {
         }
 
         private void ButtonConnect_Click(object sender, RoutedEventArgs e) {
-            //string open = "Connect";
             string open = (string)FindResource("Connect");
-
-            //string close = "Disconnect";
             string close = (string)FindResource("Disconnect");
 
             string val = buttonConnect.Content.ToString();
@@ -177,12 +171,9 @@ namespace Serial_monitor {
             }
 
             Global.SC.SendData(text);
-
-            //appendToConsoleOut(text);
             ConsoleIn.Text = "";
         }
 
-        // Skal kigge på.
         private void UpdateRX(string data) {
 
             string[] x = Regex.Split(data, "\r\n|\r|\n");
@@ -199,7 +190,6 @@ namespace Serial_monitor {
                     }
 
                     rx = new RX();
-                    //rx = null;
                 } else {
                     Debug.WriteLine("Add to: " + x[i]);
                     rx.Data += x[i];
@@ -259,7 +249,6 @@ namespace Serial_monitor {
         private void ComboBoxPort_DropDownOpened(object sender, EventArgs e) {
             Global.SC.Update();
             Debug.WriteLine("Com Update");
-            //Debug.WriteLine(ComboBoxPort.SelectedItem);
         }
 
         private void ConsoleIn_KeyUp(object sender, KeyEventArgs e) {

@@ -18,16 +18,13 @@ namespace Serial_monitor {
         public event DataReceivedHandler error;
 
         private SerialPort _serialPort;
-        //private MainWindow Box;
 
         private Timer timerS = new Timer();
 
         public SerialConnect() {
-            //this.Box = Box;
             _serialPort = new SerialPort();
             _serialPort.BaudRate = 9600;
             _serialPort.PortName = "COM3";
-            //_serialPort.DataReceived += _serialPort_DataReceived;
             timerS.Interval = 100;
             timerS.Elapsed += TimerS_Elapsed;
         }
@@ -42,24 +39,7 @@ namespace Serial_monitor {
 
             if (data.Length != 0)
                 DataReceived(text);
-            //Box.appendToConsoleOut(text);
         }
-
-        /*private void _serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e) {
-            if (!_serialPort.IsOpen)
-                return;
-            
-            //byte[] data = new byte[_serialPort.BytesToRead];
-            //_serialPort.Read(data, 0, data.Length);
-            //string text = Encoding.Default.GetString(data);
-
-            string text = _serialPort.ReadExisting();
-            //string text = _serialPort.ReadLine();
-
-            Task.Factory.StartNew(() => {
-                Box.appendToConsoleOut(text);
-            });
-        }*/
 
         public void SendData(string data) {
             if(_serialPort.IsOpen)
@@ -90,7 +70,7 @@ namespace Serial_monitor {
         /// <summary>
         /// 
         /// </summary>
-        /// <returns>Kunne den forbinde</returns>
+        /// <returns>Could it connect</returns>
         public bool Open() {
             bool isOK = false;
             try {
@@ -101,7 +81,6 @@ namespace Serial_monitor {
                 isOK = true;
             } catch {
                 error("!!! CAN'T CONNECT !!!\n\r");
-                //Box.appendToConsoleOut("!!! CAN'T CONNECT !!!\n\r");
             }
 
             return isOK;
